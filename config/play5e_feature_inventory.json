@@ -1,0 +1,33 @@
+{
+  "source_site": "https://play5e.net/",
+  "purpose": "Feature taxonomy for a future independently implemented Owlbear Rodeo extension. Not an authorization to reproduce copyrighted UI, source code, art, or non-SRD game content.",
+  "areas": [
+    {
+      "module": "dm_table_corner",
+      "route": "/table",
+      "features_to_review": ["initiative tracker", "turn and round flow", "conditions countdown", "monster search", "monster group quantity", "HP assignment", "attack and damage rolls", "map upload", "token placement", "grid and distance tools", "travel calculator", "encounter difficulty", "session notes", "session timer", "saved encounters", "homebrew creatures"]
+    },
+    {
+      "module": "character_builder",
+      "route": "/",
+      "related_route": "/guide",
+      "features_to_review": ["class selection", "species selection", "subclass selection", "ability scores", "background", "skills and proficiencies", "equipment", "spell selection", "character details", "leveling", "multiclassing", "game modifiers"]
+    },
+    {
+      "module": "character_sheet",
+      "route": "/",
+      "features_to_review": ["HP and temporary HP", "hit dice", "death saves", "conditions", "exhaustion", "inspiration", "rests", "spell slots", "spell casting", "inventory", "weight", "attunement", "currency", "attack rolls", "saving throws", "skill checks"]
+    },
+    {
+      "module": "reference_library",
+      "routes": ["/classes", "/spells", "/monsters", "/magic-items", "/rules", "/conditions", "/equipment", "/species", "/sourcebooks"],
+      "features_to_review": ["class reference", "spell search and filters", "monster stat blocks", "magic item reference", "rules reference", "conditions reference", "equipment reference", "species reference", "source and edition labels"]
+    },
+    {
+      "module": "tools",
+      "route": "/tools",
+      "features_to_review": ["point buy calculator", "ability score roller", "encounter tools", "dice tools"]
+    }
+  ],
+  "crawler_note": "The v1 crawler stores public page snapshots and structural inventories. It does not introspect authenticated app state, submit interactions, or automatically extract all structured game records from the live application. Build custom extractors only for data you are authorized to reuse."
+}

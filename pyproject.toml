@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "owlbear-toolkit-scrapling-cloud"
+version = "1.0.0"
+description = "Respectful, configurable Scrapling crawler scaffold for public-site analysis and Owlbear Toolkit research."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Owlbear Toolkit Project" }]
+dependencies = [
+  "scrapling[fetchers]>=0.4.15,<0.5",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+owlbear-scrape = "scraper.cli:main"
+
+[tool.setuptools]
+packages = ["scraper"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

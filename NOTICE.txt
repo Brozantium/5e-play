@@ -1,0 +1,5 @@
+This project depends on Scrapling, a separate third-party project. Scrapling is not included in this archive; it is installed from PyPI when setting up the environment. Scrapling's own licence and terms apply to Scrapling itself.
+
+The crawler is configured for public-page research. It is not affiliated with, endorsed by, or part of play5e.net or Owlbear Rodeo.
+
+Scrapling is installed with the version constraint >=0.4.15,<0.5 to keep the non-stealth DynamicFetcher API used by this project. Check the upstream Scrapling project for its separate licence and version notes.

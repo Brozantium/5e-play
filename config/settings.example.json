@@ -1,0 +1,44 @@
+{
+  "project": {
+    "name": "My permitted website research crawl",
+    "user_agent": "MyResearchCrawler/1.0 (+contact: you@example.com)",
+    "contact": "you@example.com"
+  },
+  "target": {
+    "start_urls": ["https://example.org/"],
+    "allowed_domains": ["example.org", "www.example.org"],
+    "path_prefixes": ["/"],
+    "exclude_path_prefixes": ["/account", "/login", "/logout"],
+    "drop_query_strings": true,
+    "obey_robots_txt": true,
+    "robots_fail_closed": true
+  },
+  "crawl": {
+    "fetch_mode": "http",
+    "max_pages": 20,
+    "max_depth": 2,
+    "delay_seconds": 2.5,
+    "timeout_seconds": 40,
+    "wait_after_load_ms": 500,
+    "network_idle": false,
+    "wait_selector": null,
+    "stop_on_forbidden_or_rate_limit": true,
+    "max_html_bytes": 5000000,
+    "max_text_chars": 20000,
+    "max_links_per_page": 200
+  },
+  "assets": {
+    "download_assets": false,
+    "allowed_extensions": [".png", ".jpg", ".jpeg", ".webp", ".gif"],
+    "max_bytes_each": 2000000,
+    "max_assets_total": 20,
+    "max_assets_per_page": 5
+  },
+  "output": {
+    "base_dir": "output",
+    "exports_dir": "exports",
+    "logs_dir": "logs",
+    "save_raw_html": true,
+    "save_assets_manifest": true
+  }
+}

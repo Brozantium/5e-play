@@ -1,0 +1,67 @@
+{
+  "project": {
+    "name": "Owlbear Toolkit play5e research crawl",
+    "user_agent": "OwlbearToolkitResearchBot/1.0 (+personal research; respects robots.txt)",
+    "contact": ""
+  },
+  "target": {
+    "start_urls": [
+      "https://play5e.net/",
+      "https://play5e.net/table",
+      "https://play5e.net/guide",
+      "https://play5e.net/classes",
+      "https://play5e.net/spells",
+      "https://play5e.net/monsters",
+      "https://play5e.net/magic-items",
+      "https://play5e.net/rules",
+      "https://play5e.net/tools",
+      "https://play5e.net/conditions",
+      "https://play5e.net/equipment",
+      "https://play5e.net/species",
+      "https://play5e.net/sourcebooks",
+      "https://play5e.net/faq"
+    ],
+    "allowed_domains": [
+      "play5e.net",
+      "www.play5e.net"
+    ],
+    "path_prefixes": ["/"],
+    "exclude_path_prefixes": [
+      "/account",
+      "/login",
+      "/signin",
+      "/logout"
+    ],
+    "drop_query_strings": true,
+    "obey_robots_txt": true,
+    "robots_fail_closed": true
+  },
+  "crawl": {
+    "fetch_mode": "dynamic",
+    "max_pages": 25,
+    "max_depth": 2,
+    "delay_seconds": 3.0,
+    "timeout_seconds": 45,
+    "wait_after_load_ms": 800,
+    "network_idle": false,
+    "wait_selector": "body",
+    "stop_on_forbidden_or_rate_limit": true,
+    "max_html_bytes": 5000000,
+    "max_text_chars": 24000,
+    "max_links_per_page": 250
+  },
+  "assets": {
+    "download_assets": false,
+    "allowed_extensions": [".png", ".jpg", ".jpeg", ".webp", ".gif"],
+    "max_bytes_each": 2000000,
+    "max_assets_total": 30,
+    "max_assets_per_page": 8
+  },
+  "output": {
+    "base_dir": "output",
+    "exports_dir": "exports",
+    "logs_dir": "logs",
+    "save_raw_html": true,
+    "save_assets_manifest": true
+  }
+}
