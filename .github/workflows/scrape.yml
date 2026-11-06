@@ -1,0 +1,84 @@
+name: Scrapling cloud crawl
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_pages:
+        description: Maximum number of pages to visit (start small)
+        required: true
+        default: "25"
+        type: string
+      max_depth:
+        description: Link depth from seed URLs
+        required: true
+        default: "2"
+        type: string
+      fetch_mode:
+        description: Use HTTP for static pages or Dynamic for JavaScript pages
+        required: true
+        default: dynamic
+        type: choice
+        options:
+          - dynamic
+          - http
+      delay_seconds:
+        description: Minimum delay between requests (seconds; minimum 1)
+        required: true
+        default: "3"
+        type: string
+      download_assets:
+        description: Download allowed same-domain images (off by default)
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: scrapling-cloud-crawl
+  cancel-in-progress: false
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out crawler project
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install Scrapling and crawler
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+
+      - name: Install browser for dynamic mode
+        if: ${{ inputs.fetch_mode == 'dynamic' }}
+        run: scrapling install
+
+      - name: Run crawl
+        run: >-
+          python run_scrape.py
+          --max-pages "${{ inputs.max_pages }}"
+          --max-depth "${{ inputs.max_depth }}"
+          --fetch-mode "${{ inputs.fetch_mode }}"
+          --delay-seconds "${{ inputs.delay_seconds }}"
+          --download-assets "${{ inputs.download_assets }}"
+
+      - name: Upload crawl outputs and ZIP bundle
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: owlbear-toolkit-scrapling-${{ github.run_number }}
+          path: |
+            output/
+            exports/
+            logs/
+          if-no-files-found: warn
+          retention-days: 14
